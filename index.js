@@ -1,1 +1,3 @@
-console.log("Up and Running")
+require('dotenv-safe').load()
+
+require('./src/server')

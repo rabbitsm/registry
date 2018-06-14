@@ -13,7 +13,7 @@ services:
     links:
       - mongo
     working_dir: /app
-    command: ["yarn", "run", "start"]
+    command: ["yarn", "run", "watch"]
   
   mongo:
     image: mongo:latest
