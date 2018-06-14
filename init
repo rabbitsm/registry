@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+	if [ -f ".env" ]; then
+		#do nothing
+		:
+	else 
+		echo "copying .env.example to .env; you can change this later"
+		#@Todo add mongo database initial setup here 
+		cp .env.example .env
+	fi
+	docker-compose --project-name rabbitsm-registry-api stop
+	docker-compose --project-name rabbitsm-registry-api run --rm api yarn
+	docker-compose --project-name rabbitsm-registry-api up -d
+	echo "Started containers in detach mode."
+	:
+else 
+	docker-compose --project-name rabbitsm-registry-api $1
+fi

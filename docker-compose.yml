@@ -1,0 +1,23 @@
+version: '3'
+networks:
+  rabbitsm:
+services:
+  api:
+    image: node:9
+    networks:
+      - rabbitsm
+    ports:
+      - "7000:7000"
+    volumes:
+      - ./:/app
+    links:
+      - mongo
+    working_dir: /app
+    command: ["yarn", "run", "start"]
+  
+  mongo:
+    image: mongo:latest
+    networks:
+      - rabbitsm
+    ports:
+      - "27017:27017"
