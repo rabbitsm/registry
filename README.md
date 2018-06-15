@@ -8,4 +8,4 @@ run `./init up`
 
 ## Stop
 
- run `./init stop`
+run `./init stop`
