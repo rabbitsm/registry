@@ -32,7 +32,7 @@ ItemController.create = function (req, res, next) {
       })      
     } else {
       console.log('exist')
-      res.json(406, {message: `${name} with version ${version} already exists`})
+      res.json(409, {message: `${name} with version ${version} already exists`})
       next()
       return
     }
