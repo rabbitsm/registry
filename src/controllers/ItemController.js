@@ -64,4 +64,14 @@ ItemController.read = function (req, res, next) {
     })
 }
 
+ItemController.list = function (req, res, next) {
+  var name = req.params.name
+  Item.find({name})
+    .select('ear -_id')
+    .exec((err, data) => {
+      res.json(200, data)
+      next()
+    })
+}
+
 module.exports = ItemController

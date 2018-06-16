@@ -28,5 +28,6 @@ server.get('/', (req, res, next) => {
 server.post('/item', ItemController.create)
 server.get('/item/:name', ItemController.read)
 server.get('/item/:name/:version', ItemController.read)
+server.get('/list/:name', ItemController.list)
 
 server.listen(SERVER_PORT, console.log(`API running on port ${SERVER_PORT}`))
