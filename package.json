@@ -8,7 +8,10 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "node .",
-    "watch": "nodemon . --exec babel-node"
+    "watch": "nodemon . --exec babel-node",
+    "server": "node dist/index.js",
+    "build:clean": "rm -rf dist && mkdir dist",
+    "build": "yarn run build:clean; babel index.js src --out-file dist/index.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
