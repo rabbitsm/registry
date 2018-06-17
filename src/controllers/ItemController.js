@@ -61,10 +61,14 @@ ItemController.read = function (req, res, next) {
 ItemController.list = function (req, res, next) {
   var name = req.params.name
   Item.find({name})
-    .select('ear -_id')
+    .select('ear downloads -_id')
     .exec((err, data) => {
+      var totalDownloads = 0 
+      data.forEach(version => {
+        totalDownloads += version.downloads
+      });
       if (err) next(new createError.InternalServerError())
-      res.json(200, data)
+      res.json(200, {downloads: totalDownloads, count: data.length, data})
     })
 }
 

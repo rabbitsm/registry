@@ -18,6 +18,10 @@ var ItemSchema = new mongoose.Schema({
   description: {
     type: String
   },
+  downloads:{
+    type: Number,
+    default: 0
+  },
   license: {
     type: String
   },
