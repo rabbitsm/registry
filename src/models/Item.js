@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import createError from 'http-errors'
 
 var ItemSchema = new mongoose.Schema({
   ear: {
@@ -56,6 +57,13 @@ ItemSchema.statics.exists = function(ear, cb) {
       } else {
         cb(true)
       }
+    })
+}
+
+ItemSchema.statics.download = function(ear) {
+  this.findOneAndUpdate({ear}, {$inc: {'downloads': 1}})
+    .exec((err, data) => {
+      if (err) console.error(new createError.InternalServerError())
     })
 }
 

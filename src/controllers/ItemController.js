@@ -43,6 +43,7 @@ ItemController.read = function (req, res, next) {
     .exec((err, item) => {
       if (err) next(new createError.InternalServerError())
       if (version === 'latest') {
+        if(req.headers.download) Item.download(item[0].ear)
         res.json(200, item[0])
       } else {
         Item.findOne({ear})
@@ -51,6 +52,7 @@ ItemController.read = function (req, res, next) {
             if (!i) {
               res.json(404, {message: `package with version ${version} not found`})
             } else {
+              if(req.headers.download) Item.download(i.ear)
               res.json(200, i)
             }
           })
