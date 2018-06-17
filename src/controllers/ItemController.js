@@ -63,8 +63,8 @@ ItemController.list = function (req, res, next) {
   Item.find({name})
     .select('ear -_id')
     .exec((err, data) => {
+      if (err) next(new createError.InternalServerError())
       res.json(200, data)
-      next()
     })
 }
 
