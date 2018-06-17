@@ -1,3 +1,4 @@
+import createError from 'http-errors'
 import Item from '../models/Item'
 
 var ItemController = {}
@@ -20,21 +21,15 @@ ItemController.create = function (req, res, next) {
 
   Item.exists(ear, (exists) => {
     if (!exists) {
-      console.log('doesnt')
       Item.create(software)
       .then((user) => {
         res.json(200, {itemName: user.ear, id: user._id, scripts: user.scripts})
-        next()
-        return
       })
       .catch((err) => {
-        throw err
-      })      
+        next(new createError.InternalServerError())
+      })
     } else {
-      console.log('exist')
-      res.json(409, {message: `${name} with version ${version} already exists`})
-      next()
-      return
+      res.json(400, {message: `${name} with version ${version} already exists`})
     }
   })
 }
@@ -46,18 +41,17 @@ ItemController.read = function (req, res, next) {
   Item.find({name})
     .sort('-date')
     .exec((err, item) => {
+      if (err) next(new createError.InternalServerError())
       if (version === 'latest') {
-        res.json(item[0])
+        res.json(200, item[0])
       } else {
         Item.findOne({ear})
           .exec((err, i) => {
-            if (err) throw err
+            if (err) next(new createError.InternalServerError())
             if (!i) {
-              res.json({message: `package with version ${version} not found`})
-              next()
+              res.json(404, {message: `package with version ${version} not found`})
             } else {
-              res.json(i)
-              next()
+              res.json(200, i)
             }
           })
       }

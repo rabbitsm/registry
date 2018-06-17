@@ -47,7 +47,6 @@ ItemSchema.statics.exists = function(ear, cb) {
   this.findOne({ear})
     .exec((err, item) => {
       if (err) throw err
-      console.log(item)
       if (item === null){
         cb(false)
       } else {
