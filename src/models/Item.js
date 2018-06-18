@@ -19,6 +19,10 @@ var ItemSchema = new mongoose.Schema({
   description: {
     type: String
   },
+  type: {
+    type: String,
+    required: true,
+  },
   downloads:{
     type: Number,
     default: 0

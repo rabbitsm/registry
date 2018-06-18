@@ -21,5 +21,7 @@ run `./init stop`
 - [ ] certified API
 - [ ] total downloads function
 - [ ] list all available images - API
-- [ ] keywords
+- [x] keywords
+- [ ] chalk everything
+- [x] type (package | software | language | tool)
 - [ ] may be README
