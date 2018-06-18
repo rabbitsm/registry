@@ -26,6 +26,9 @@ var ItemSchema = new mongoose.Schema({
   license: {
     type: String
   },
+  keywords: [{
+    type: String
+  }],
   author: {
     id: String,
     name: String,
