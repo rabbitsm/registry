@@ -1,6 +1,7 @@
 import restify from 'restify'
 import mongoose from 'mongoose'
 
+import HomeController from './controllers/HomeController'
 import ItemController from './controllers/ItemController'
 
 const SERVER_PORT = process.env.SERVER_PORT
@@ -19,11 +20,7 @@ dbConnection.on("open", () => console.log("MongoDB connected"));
 
 server.use(restify.plugins.bodyParser())
 
-server.get('/', (req, res, next) => {
-  console.log('home')
-  res.json({message: 'hello'})
-  next()
-})
+server.get('/', HomeController.list)
 
 server.post('/item', ItemController.create)
 server.get('/item/:name', ItemController.read)

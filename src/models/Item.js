@@ -57,6 +57,10 @@ var ItemSchema = new mongoose.Schema({
     type: String,
     enum: ['official', 'certified', 'community', 'rsm'],
     default: 'community'
+  },
+  deprecated: {
+    type: Boolean,
+    default: false
   }
 })
 
