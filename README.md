@@ -12,7 +12,7 @@ run `./init stop`
 
 ### TODO
 
-- [ ] LIST all versions
+- [x] LIST all versions
 - [x] Download counter for versions
 - [ ] **AUTH**
 - [ ] icon upload
@@ -22,6 +22,5 @@ run `./init stop`
 - [ ] total downloads function
 - [ ] list all available images - API
 - [x] keywords
-- [ ] chalk everything
 - [x] type (package | software | language | tool)
 - [ ] may be README

@@ -52,6 +52,11 @@ var ItemSchema = new mongoose.Schema({
   },
   scripts: {
     type: Map
+  },
+  edition: {
+    type: String,
+    enum: ['official', 'certified', 'community', 'rsm'],
+    default: 'community'
   }
 })
 
