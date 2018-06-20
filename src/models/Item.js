@@ -21,6 +21,7 @@ var ItemSchema = new mongoose.Schema({
   },
   type: {
     type: String,
+    enum: ['software', 'language', 'package', 'modules'],
     required: true,
   },
   downloads:{
